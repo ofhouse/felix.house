@@ -1,13 +1,20 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  margin-bottom: '1.45rem';
+`;
+
+const Headline = {
+  Link: styled(Link)`
+    color: black;
+    text-decoration: none;
+  `,
+};
 
 const Header = () => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
+  <Wrapper>
     <div
       style={{
         margin: '0 auto',
@@ -16,18 +23,10 @@ const Header = () => (
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          Gatsby
-        </Link>
+        <Headline.Link to="/">Felix Haus</Headline.Link>
       </h1>
     </div>
-  </div>
-)
+  </Wrapper>
+);
 
-export default Header
+export default Header;

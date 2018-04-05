@@ -1,0 +1,4 @@
+https://felix.haus/* https://felix.house/:splat 301!
+http://felix.haus/* https://felix.house/:splat 301!
+https://www.felix.haus/* https://felix.house/:splat 301!
+http://www.felix.haus/* https://felix.house/:splat 301!

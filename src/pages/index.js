@@ -17,17 +17,25 @@ const IndexPage = () => (
   <div>
     <List>
       <ListItem>
-        <a href="https://twitter.com/ofhouse" rel="noopener">
+        <a href="https://twitter.com/ofhouse" rel="noopener" target="__blank">
           Twitter
         </a>
       </ListItem>
       <ListItem>
-        <a href="https://www.xing.com/profile/Felix_Haus2" rel="noopener">
+        <a
+          href="https://www.xing.com/profile/Felix_Haus2"
+          rel="noopener"
+          target="__blank"
+        >
           Xing
         </a>
       </ListItem>
       <ListItem>
-        <a href="https://www.linkedin.com/in/felixhaus" rel="noopener">
+        <a
+          href="https://www.linkedin.com/in/felixhaus"
+          rel="noopener"
+          target="__blank"
+        >
           LinkedIn
         </a>
       </ListItem>

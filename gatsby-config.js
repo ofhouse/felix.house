@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Felix Haus',
   },
   plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-netlify'],
 };

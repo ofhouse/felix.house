@@ -1,27 +1,17 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-`;
-const ListItem = styled.li`
-  & a {
-    text-decoration: underline;
-    color: black;
-  }
-`;
+import Layout from '../components/Layout';
+import List from '../components/List';
 
 const IndexPage = () => (
-  <div>
+  <Layout>
     <List>
-      <ListItem>
+      <List.Item>
         <a href="https://twitter.com/ofhouse" rel="noopener" target="__blank">
           Twitter
         </a>
-      </ListItem>
-      <ListItem>
+      </List.Item>
+      <List.Item>
         <a
           href="https://www.xing.com/profile/Felix_Haus2"
           rel="noopener"
@@ -29,8 +19,8 @@ const IndexPage = () => (
         >
           Xing
         </a>
-      </ListItem>
-      <ListItem>
+      </List.Item>
+      <List.Item>
         <a
           href="https://www.linkedin.com/in/felixhaus"
           rel="noopener"
@@ -38,9 +28,9 @@ const IndexPage = () => (
         >
           LinkedIn
         </a>
-      </ListItem>
+      </List.Item>
     </List>
-  </div>
+  </Layout>
 );
 
 export default IndexPage;

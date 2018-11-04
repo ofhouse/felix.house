@@ -4,20 +4,22 @@
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
+    "babel-plugin-styled-components": "1.8.0",
     "gatsby": "next",
     "gatsby-image": "next",
     "gatsby-plugin-netlify": "next",
     "gatsby-plugin-react-helmet": "next",
     "gatsby-plugin-sharp": "next",
+    "gatsby-plugin-styled-components": "3.0.1",
     "normalize.css": "8.0.0",
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-helmet": "^5.2.0",
-    "styled-components": "3.2.5"
+    "styled-components": "4.0.3"
   },
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
+    "dev": "gatsby develop --https --cert-file localhost+2.pem --key-file localhost+2-key.pem",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

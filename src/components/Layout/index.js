@@ -1,33 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 import Header from '../Header';
 
 import 'normalize.css';
 import './global.css';
 
+const VCenter = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 0 32px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <VCenter>
     <Helmet
       title="Felix Haus"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        {
+          name: 'description',
+          content: 'Digital product designer living in Kassel, Germany.',
+        },
+        {
+          name: 'keywords',
+          content: 'Felix Haus, frontend developer, designer',
+        },
       ]}
     />
-    <Header />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children}
-    </div>
-  </div>
+    <Flex>
+      <Header />
+      <div>{children}</div>
+    </Flex>
+  </VCenter>
 );
 
 TemplateWrapper.propTypes = {

@@ -4,7 +4,8 @@ html {
 
 html,
 body,
-#___gatsby {
+#___gatsby,
+div[role='group'][tabindex] {
   font-family: sans-serif;
   min-height: 100%;
   display: flex;

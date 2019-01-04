@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop --https --cert-file localhost+2.pem --key-file localhost+2-key.pem",
+    "dev": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

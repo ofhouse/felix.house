@@ -10,9 +10,20 @@ const Content = styled.p`
   color: #c2c2c2;
 
   a {
+    font-family: monospace;
+    background-color: #1f1f1f;
+    border-radius: 6px;
     font-size: 1.125rem;
-    text-decoration: underline;
+    text-decoration: none;
     color: #c2c2c2;
+    padding: 0.4rem;
+    letter-spacing: 1px;
+
+    &:hover,
+    &:focus {
+      background-color: white;
+      color: black;
+    }
   }
 `;
 
@@ -21,7 +32,7 @@ const IndexPage = () => (
     <Content>
       Digital product designer. I work at{' '}
       <a href="https://eoda.de" rel="noopener" target="__blank">
-        eoda GmbH
+        eoda
       </a>
       .<br />
       Previously I built the first digital account-switching service in Germany
@@ -33,6 +44,11 @@ const IndexPage = () => (
     </Content>
 
     <List>
+      <List.Item>
+        <a href="https://github.com/ofhouse" rel="noopener" target="__blank">
+          GitHub
+        </a>
+      </List.Item>
       <List.Item>
         <a href="https://twitter.com/ofhouse" rel="noopener" target="__blank">
           Twitter

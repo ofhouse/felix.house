@@ -1,8 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 import Layout from '../components/Layout';
 import List from '../components/List';
+
+const Wrapper = styled.div`
+  margin-bottom: '1.45rem';
+`;
+
+const Headline = {
+  Link: styled(Link)`
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  `,
+};
 
 const Content = styled.p`
   font-size: 1.25rem;
@@ -29,13 +46,19 @@ const Content = styled.p`
 
 const IndexPage = () => (
   <Layout>
+    <Wrapper>
+      <h1 style={{ margin: 0 }}>
+        <Headline.Link to="/">Felix Haus</Headline.Link>
+      </h1>
+    </Wrapper>
+
     <Content>
       Digital product designer. I work at{' '}
       <a href="https://eoda.de" rel="noopener" target="__blank">
         eoda
       </a>
       .<br />
-      Previously I built the first digital account-switching service in Germany
+      Previously I built the first digital bank account switching service in Germany
       with{' '}
       <a href="https://fino.ai" rel="noopener" target="__blank">
         fino

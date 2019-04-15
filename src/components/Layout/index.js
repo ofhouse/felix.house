@@ -18,10 +18,11 @@ const VCenter = styled.div`
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const TemplateWrapper = ({ children }) => (
-  <VCenter>
+  <React.Fragment>
     <Helmet
       title="Felix Haus"
       meta={[
@@ -37,9 +38,11 @@ const TemplateWrapper = ({ children }) => (
     />
     <Flex>
       <Header />
-      <div>{children}</div>
+      <VCenter>
+        <Flex>{children}</Flex>
+      </VCenter>
     </Flex>
-  </VCenter>
+  </React.Fragment>
 );
 
 TemplateWrapper.propTypes = {

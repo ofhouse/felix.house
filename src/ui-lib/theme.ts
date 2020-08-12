@@ -2,6 +2,9 @@ const breakpoints = ['40em', '52em', '64em', '80em'];
 
 const colors = {
   primary: '#000000',
+  gray: {
+    '100': '#FAFAFA',
+  },
 };
 
 // aliases

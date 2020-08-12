@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
+
+import styled from '../styled-components';
 
 const InternalApplyStyle: React.FC<{ className?: string }> = ({
   children,

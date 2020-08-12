@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
 
+import styled from '../ui-lib/styled-components';
 import { Display, Paragraph1 } from '../ui-lib/typography';
 import { Stack } from '../ui-lib/block';
 import { withBaseLayout } from '../components/layout/base';
@@ -23,9 +23,11 @@ const IndexPage: React.FC = () => (
         <Wordmark />
         <Display as="h1">Felix Haus</Display>
 
-        <Paragraph1>
-          I am a digital product designer working at eoda. Previously I built
-          the first digital bank account switching service in Germany with fino.
+        <Paragraph1 textAlign="center">
+          I am a digital product designer working at <br />
+          eoda. Previously I built the first digital <br />
+          bank account switching service in Germany <br />
+          with fino.
         </Paragraph1>
       </Stack>
     </Center>

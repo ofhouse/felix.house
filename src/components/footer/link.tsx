@@ -11,6 +11,11 @@ const linkStyle = css(({ theme }) => ({
   flex: 1,
   textAlign: 'center',
   textDecoration: 'none',
+  fontSize: 22,
+
+  '&:hover': {
+    backgroundColor: theme.colors.gray[100],
+  },
 }));
 
 interface FooterLinkComponents {

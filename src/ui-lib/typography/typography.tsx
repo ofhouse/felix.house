@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Block } from '../block';
-import { BlockPropsT } from '../block/block';
+import { TypeBlock } from '../block';
+import { TypeBlockT } from '../block/typography';
 
-export const Display: React.FC<BlockPropsT> = props => <Block {...props} />;
+export const Display: React.FC<TypeBlockT> = props => <TypeBlock {...props} />;
 
-export const Paragraph1: React.FC<BlockPropsT> = props => {
+export const Paragraph1: React.FC<TypeBlockT> = props => {
   const as = props.as || 'p';
-  return <Block as={as} {...props} />;
+  return <TypeBlock as={as} {...props} />;
 };

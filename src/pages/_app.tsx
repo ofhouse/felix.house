@@ -1,58 +1,56 @@
-import App from 'next/app';
+import * as React from 'react';
+import { AppProps } from 'next/app';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
 
-export default class Site extends App {
-  cms: TinaCMS;
-
-  constructor(props) {
-    super(props);
-    /**
-     * 1. Create the TinaCMS instance
-     */
-    this.cms = new TinaCMS({
-      enabled: !!props.pageProps.preview,
-      apis: {
+const Site: React.FC<AppProps> = ({ Component, pageProps }) => {
+  const cms = React.useMemo(
+    () =>
+      new TinaCMS({
+        enabled: !!pageProps.preview,
+        apis: {
+          /**
+           * 2. Register the GithubClient
+           */
+          github: new GithubClient({
+            proxy: '/api/proxy-github',
+            authCallbackRoute: '/api/create-github-access-token',
+            clientId: process.env.GITHUB_CLIENT_ID,
+            baseRepoFullName: process.env.REPO_FULL_NAME,
+            baseBranch: process.env.BASE_BRANCH,
+          }),
+        },
         /**
-         * 2. Register the GithubClient
+         * 3. Use the Sidebar and Toolbar
          */
-        github: new GithubClient({
-          proxy: '/api/proxy-github',
-          authCallbackRoute: '/api/create-github-access-token',
-          clientId: process.env.GITHUB_CLIENT_ID,
-          baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
-        }),
-      },
-      /**
-       * 3. Use the Sidebar and Toolbar
-       */
-      sidebar: props.pageProps.preview,
-      toolbar: props.pageProps.preview,
-    });
-  }
+        sidebar: pageProps.preview,
+        toolbar: pageProps.preview,
+      }),
+    [pageProps.preview]
+  );
 
-  render() {
-    const { Component, pageProps } = this.props;
+  // Don't show edit options when in production mode
+  if (process.env.STAGE === 'production') {
     return (
-      /**
-       * 4. Wrap the page Component with the Tina and Github providers
-       */
-      <TinaProvider cms={this.cms}>
+      <TinaProvider cms={cms}>
+        <Component {...pageProps} />
+      </TinaProvider>
+    );
+  } else {
+    return (
+      <TinaProvider cms={cms}>
         <TinacmsGithubProvider
           onLogin={onLogin}
           onLogout={onLogout}
           error={pageProps.error}
         >
-          {/**
-           * 5. Add a button for entering Preview/Edit Mode
-           */}
-          <EditLink cms={this.cms} />
+          <EditLink cms={cms} />
           <Component {...pageProps} />
         </TinacmsGithubProvider>
       </TinaProvider>
     );
   }
-}
+};
 
 const onLogin = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null;
@@ -86,3 +84,5 @@ export const EditLink = ({ cms }: EditLinkProps) => {
     </button>
   );
 };
+
+export default Site;

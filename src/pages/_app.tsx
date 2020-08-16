@@ -3,6 +3,11 @@ import { AppProps } from 'next/app';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
 
+async function importTinaPlugins(cms: TinaCMS) {
+  const { MarkdownFieldPlugin } = await import('react-tinacms-editor');
+  cms.plugins.add(MarkdownFieldPlugin);
+}
+
 const Site: React.FC<AppProps> = ({ Component, pageProps }) => {
   const cms = React.useMemo(
     () =>
@@ -28,6 +33,12 @@ const Site: React.FC<AppProps> = ({ Component, pageProps }) => {
       }),
     [pageProps.preview]
   );
+
+  React.useEffect(() => {
+    if (pageProps.preview) {
+      importTinaPlugins(cms);
+    }
+  }, [pageProps.preview, cms]);
 
   // Don't show edit options when in production mode
   if (process.env.STAGE === 'production') {
@@ -79,9 +90,22 @@ export interface EditLinkProps {
 
 export const EditLink = ({ cms }: EditLinkProps) => {
   return (
-    <button onClick={() => cms.toggle()}>
-      {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site'}
-    </button>
+    <div className="toolbar">
+      <button onClick={() => cms.toggle()}>
+        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site'}
+      </button>
+
+      <style jsx>
+        {`
+          .toolbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+          }
+        `}
+      </style>
+    </div>
   );
 };
 

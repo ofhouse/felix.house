@@ -15,7 +15,7 @@ const IndexPage = ({ file }) => {
   return (
     <div>
       <h1>{data.title}</h1>
-      <p>some text</p>
+      <p>This is a test!</p>
     </div>
   );
 };

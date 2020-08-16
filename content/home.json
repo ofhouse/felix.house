@@ -4,7 +4,23 @@
   "links": [
     {
       "label": "GitHub",
+      "id": "1puueo4y6",
       "link": "https://github.com/ofhouse"
+    },
+    {
+      "label": "Twitter",
+      "id": "9oizqvqbp",
+      "link": "https://twitter.com/ofhouse"
+    },
+    {
+      "label": "Xing",
+      "id": "vfxcuhkj8",
+      "link": "https://www.xing.com/profile/Felix_Haus2"
+    },
+    {
+      "label": "LinkedIn",
+      "id": "vxijiltp9",
+      "link": "https://www.linkedin.com/in/felixhaus"
     }
   ]
 }

@@ -5,7 +5,7 @@ import { usePlugin } from 'tinacms';
 import { useGithubJsonForm, GithubFormOptions } from 'react-tinacms-github';
 import ReactMarkdown from 'react-markdown';
 
-import { Layout } from '../components/layout';
+import { Layout } from '../design/layout';
 import { MetaTags } from '../components/meta-tags';
 
 const IndexPage = ({ file }) => {

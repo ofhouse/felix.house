@@ -2,7 +2,7 @@
 title: Hot Module Replacement in AngularJS with babel-plugin
 date: '2019-12-08'
 description: >-
-  _Learn how to enable Hot Module Replacement in your AngularJS project. This tutorial shows you how to setup Hot Reloading with a simple Babel plugin in Webpack._
+  Learn how to enable Hot Module Replacement in your AngularJS project. This tutorial shows you how to setup Hot Reloading with a simple Babel plugin in Webpack.
 keywords:
   - JavaScript
   - AngularJS

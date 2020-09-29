@@ -7,12 +7,21 @@ import 'normalize.css';
 import { Menu } from '../components/menu';
 
 const themeDark = css`
-  --color-bg-surface: #121212;
+  :global() {
+    :root {
+      --color-bg-surface: #0d0d0e;
+      --color-text-primary: #e4e7ff;
+
+      --font-headline: 'Work Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--color-bg-surface);
+    }
+  }
 `;
 
 const Root = styled.div`
-  background-color: var(--color-bg-surface);
-
   /* work-sans-500 - latin */
   @font-face {
     font-family: 'Work Sans';
@@ -59,12 +68,19 @@ const Root = styled.div`
   display: flex;
 `;
 
-export const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  header: React.ReactElement;
+}
+
+export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
   return (
     <Root className={themeDark}>
       <Menu />
 
-      {children}
+      <div>
+        {header}
+        {children}
+      </div>
     </Root>
   );
 };

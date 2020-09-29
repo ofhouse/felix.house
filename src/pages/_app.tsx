@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { AppProps } from 'next/app';
+import { css } from 'linaria';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
+
+const toolbarStyle = css`
+  position: fixed;
+`;
 
 async function importTinaPlugins(cms: TinaCMS) {
   const { MarkdownFieldPlugin } = await import('react-tinacms-editor');
@@ -90,20 +95,10 @@ export interface EditLinkProps {
 
 export const EditLink = ({ cms }: EditLinkProps) => {
   return (
-    <div className="toolbar">
+    <div className={toolbarStyle}>
       <button onClick={() => cms.toggle()}>
         {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site'}
       </button>
-
-      <style jsx>
-        {`
-          .toolbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-          }
-        `}
-      </style>
     </div>
   );
 };

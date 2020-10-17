@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Head from 'next/head';
 
+import { org } from './schema-data';
+
 const defaultTitle = 'Felix Haus – Designer and Developer from Kassel, Germany';
 
 interface MetaTagsProps {
@@ -21,6 +23,10 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
       {description ? (
         <meta property="og:description" content={description} />
       ) : null}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: org }}
+      ></script>
       {children}
     </Head>
   );

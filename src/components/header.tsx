@@ -2,8 +2,11 @@ import * as React from 'react';
 import { styled } from 'linaria/react';
 
 const Root = styled.div`
-  padding: 50px;
+  padding-top: 50px;
+  padding-left: 50px;
   height: 94px;
+  display: flex;
+  align-items: center;
 `;
 
 const Headline = styled.h2`

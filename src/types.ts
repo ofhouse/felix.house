@@ -1,3 +1,5 @@
+import { GrayMatterFile } from 'gray-matter';
+
 export interface BlogMeta {
   title: string;
   date: string;
@@ -5,7 +7,7 @@ export interface BlogMeta {
   keywords: string[];
 }
 
-export interface BlogMatterFile {
+export interface BlogMatterFile extends GrayMatterFile<string> {
   content: string;
   data: BlogMeta;
   isEmpty: boolean;
@@ -14,5 +16,5 @@ export interface BlogMatterFile {
 
 export interface IndexPageArticles {
   title: string;
-
+  date: string;
 }

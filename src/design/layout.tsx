@@ -13,6 +13,7 @@ const themeDark = css`
       --color-text-primary: #e4e7ff;
 
       --font-headline: 'Work Sans', sans-serif;
+      --font-base: 'Inter', sans-serif;
     }
 
     body {
@@ -63,6 +64,22 @@ const Root = styled.div`
       /* Safari, Android, iOS */
         url('/assets/fonts/work-sans/work-sans-v8-latin-600.svg#WorkSans')
         format('svg'); /* Legacy iOS */
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/inter/inter-regular.woff2') format('woff2'),
+      url('/assets/fonts/inter/inter-regular.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/assets/fonts/inter/inter-medium.woff2') format('woff2'),
+      url('/assets/fonts/inter/inter-medium.woff') format('woff');
   }
 
   display: flex;

@@ -9,7 +9,7 @@ import { Menu } from '../components/menu';
 const themeDark = css`
   :global() {
     :root {
-      --color-bg-surface: #0d0d0e;
+      --color-bg-surface: #000000;
       --color-text-primary: #e4e7ff;
 
       --font-headline: 'Work Sans', sans-serif;
@@ -78,11 +78,15 @@ const Root = styled.div`
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url('/assets/fonts/inter/inter-medium.woff2') format('woff2'),
-      url('/assets/fonts/inter/inter-medium.woff') format('woff');
+    src: url('/assets/fonts/inter/inter-semibold.woff2') format('woff2'),
+      url('/assets/fonts/inter/inter-semibold.woff') format('woff');
   }
 
   display: flex;
+`;
+
+const contentWrapperStyle = css`
+  width: 100%;
 `;
 
 interface LayoutProps {
@@ -94,7 +98,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
     <Root className={themeDark}>
       <Menu />
 
-      <div>
+      <div className={contentWrapperStyle}>
         {header}
         {children}
       </div>

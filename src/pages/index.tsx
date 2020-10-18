@@ -21,16 +21,21 @@ const blogItems = importAll(
 
 const linkStyle = css`
   text-decoration: none;
+  margin-bottom: 48px;
+  display: block;
 `;
 
 const listStyle = css`
   list-style: none;
+  margin: 0;
+  padding: 100px 0 0 50px;
 `;
 
 const dateStyle = css`
   display: block;
   position: relative;
   width: 100%;
+  padding-bottom: 16px;
 
   &::before {
     content: '';
@@ -48,7 +53,7 @@ const dateStyleContainer = css`
   color: #e4e7ff;
   display: inline-block;
   padding-right: 18px;
-  background-color: #0d0d0e;
+  background-color: var(--color-bg-surface);
   font-size: 18px;
   font-family: var(--font-base);
   letter-spacing: 0.085em;
@@ -56,14 +61,43 @@ const dateStyleContainer = css`
 `;
 
 const titleStyle = css`
+  display: inline-block;
+  max-width: 900px;
   font-family: var(--font-base);
   font-weight: 600;
   font-size: 48px;
   line-height: 135%;
 
-  background: -webkit-linear-gradient(0deg, #4355e7, #d22ca4);
+  background: linear-gradient(
+    to right,
+    #4355e7 0%,
+    #d22ca4 33.3%,
+    #4355e7 66.6%,
+    #d22ca4 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 0;
+    }
+
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  a:hover & {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+  }
 `;
 
 interface IndexPageProps {
@@ -73,8 +107,8 @@ interface IndexPageProps {
 const IndexPage: NextPage<IndexPageProps> = ({ articles }) => {
   return (
     <Layout header={<Header title="Latest Articles" />}>
-      <MetaTags description="Felix Haus is a digital product designer from Kassel, Germany." />
-      <ol>
+      <MetaTags description="My name is Felix Haus. I am a digital product designer living in Kassel, Germany." />
+      <ol className={listStyle}>
         {articles.map(({ title, date }) => (
           <li key={title}>
             <Link href="/">

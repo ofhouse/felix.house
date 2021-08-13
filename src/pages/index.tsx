@@ -1,51 +1,29 @@
-import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { GetStaticProps } from 'next';
+import * as React from 'react';
 import Link from 'next/link';
-import { usePlugin } from 'tinacms';
-import { useGithubJsonForm, GithubFormOptions } from 'react-tinacms-github';
-import ReactMarkdown from 'react-markdown';
 
 import { Layout } from '../components/layout';
 import { MetaTags } from '../components/meta-tags';
 
-const IndexPage = ({ file }) => {
-  const formOptions: GithubFormOptions = {
-    label: 'Home Page',
-    fields: [
-      { name: 'title', label: 'Title', component: 'text' },
-      {
-        name: 'description',
-        label: 'Description',
-        component: 'markdown',
-      },
-      {
-        name: 'links',
-        Label: 'Links',
-        component: 'group-list',
-        fields: [
-          { name: 'label', label: 'Label', component: 'text' },
-          { name: 'link', label: 'Link', component: 'text' },
-        ],
-        defaultItem: () => ({
-          label: '',
-          id: Math.random().toString(36).substr(2, 9),
-        }),
-        itemProps(item) {
-          return {
-            key: item.id,
-            label: item.label,
-          };
-        },
-      },
-    ],
-    serialize(input) {
-      return input;
-    },
-  };
+const socialLinks = [
+  {
+    label: 'GitHub',
+    link: 'https://github.com/ofhouse',
+  },
+  {
+    label: 'Twitter',
+    link: 'https://twitter.com/ofhouse',
+  },
+  {
+    label: 'Xing',
+    link: 'https://www.xing.com/profile/Felix_Haus2',
+  },
+  {
+    label: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/felixhaus',
+  },
+];
 
-  const [data, form] = useGithubJsonForm(file, formOptions);
-  usePlugin(form);
-
+const IndexPage = () => {
   return (
     <Layout>
       <MetaTags description="Felix Haus is a digital product designer from Kassel, Germany." />
@@ -54,24 +32,27 @@ const IndexPage = ({ file }) => {
           <div className="content-root">
             <h1>
               <Link href="/">
-                <a>{data.title}</a>
+                <a>Felix Haus</a>
               </Link>
             </h1>
 
             <div className="home__content">
-              <ReactMarkdown
-                source={data.description}
-                renderers={{
-                  link: (props) => (
-                    <a href={props.href} target="_blank" rel="noopener">
-                      {props.children}
-                    </a>
-                  ),
-                }}
-              />
+              <p>
+                Digital product designer. I work at 
+                <a href="https://eoda.de/" target="_blank" rel="noopener">
+                  eoda
+                </a>
+                .<br />
+                Previously I built the first digital bank account switching
+                service in Germany with 
+                <a href="https://eoda.de/" target="_blank" rel="noopener">
+                  fino
+                </a>
+                .
+              </p>
             </div>
             <ul className="home__social-links">
-              {data.links.map(({ label, link }) => (
+              {socialLinks.map(({ label, link }) => (
                 <li className="home__social-link" key={label}>
                   <a href={link} target="_blank" rel="noopener">
                     {label}
@@ -162,30 +143,6 @@ const IndexPage = ({ file }) => {
       `}</style>
     </Layout>
   );
-};
-
-export const getStaticProps: GetStaticProps = async function ({
-  preview,
-  previewData,
-}) {
-  if (preview) {
-    return getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: 'content/home.json',
-      parse: parseJson,
-    });
-  }
-  return {
-    props: {
-      sourceProvider: null,
-      error: null,
-      preview: false,
-      file: {
-        fileRelativePath: 'content/home.json',
-        data: (await import('../../content/home.json')).default,
-      },
-    },
-  };
 };
 
 export default IndexPage;

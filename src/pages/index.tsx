@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Link from 'next/link';
 
 import { Layout } from '../components/layout';
@@ -13,10 +12,7 @@ const socialLinks = [
     label: 'Twitter',
     link: 'https://twitter.com/ofhouse',
   },
-  {
-    label: 'Xing',
-    link: 'https://www.xing.com/profile/Felix_Haus2',
-  },
+
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/felixhaus',
@@ -26,35 +22,27 @@ const socialLinks = [
 const IndexPage = () => {
   return (
     <Layout>
-      <MetaTags description="Felix Haus is a digital product designer from Kassel, Germany." />
-      <div className="outer-flex">
-        <div className="vcenter">
-          <div className="content-root">
+      <MetaTags description='Felix Haus is a digital product designer from Kassel, Germany.' />
+      <div className='outer-flex'>
+        <div className='vcenter'>
+          <div className='content-root'>
             <h1>
-              <Link href="/">
-                <a>Felix Haus</a>
-              </Link>
+              <Link href='/'>Felix Haus</Link>
             </h1>
 
-            <div className="home__content">
+            <div className='home__content'>
               <p>
                 Digital product designer. I work at 
-                <a href="https://eoda.de/" target="_blank" rel="noopener">
-                  eoda
+                <a href='https://vercel.com/' target='_blank' rel='noopener'>
+                  Vercel
                 </a>
                 .<br />
-                Previously I built the first digital bank account switching
-                service in Germany with 
-                <a href="https://eoda.de/" target="_blank" rel="noopener">
-                  fino
-                </a>
-                .
               </p>
             </div>
-            <ul className="home__social-links">
+            <ul className='home__social-links'>
               {socialLinks.map(({ label, link }) => (
-                <li className="home__social-link" key={label}>
-                  <a href={link} target="_blank" rel="noopener">
+                <li className='home__social-link' key={label}>
+                  <a href={link} target='_blank' rel='noopener'>
                     {label}
                   </a>
                 </li>
@@ -82,13 +70,13 @@ const IndexPage = () => {
           padding: 32px 0;
         }
 
-        h1 > a {
+        h1 > :global(a) {
           color: #000;
           text-decoration: none;
           font-weight: normal;
         }
 
-        h1 > a:hover {
+        h1 > :global(a:hover) {
           text-decoration: underline;
         }
 

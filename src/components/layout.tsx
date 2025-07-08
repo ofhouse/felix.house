@@ -1,6 +1,10 @@
-import * as React from 'react';
+import type { JSX } from 'react';
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout = ({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[];
+}) => {
   return (
     <>
       {children}
